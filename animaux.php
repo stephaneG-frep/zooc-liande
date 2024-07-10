@@ -8,7 +8,7 @@
 <div class="container px-4 py-5">
 
     <div class="row text-center">
-        <h1>Nos amis les animaux</h1>
+        <h1 style="color: #F7DB6A;">Nos amis les animaux</h1>
 
         <div class="col-md-4 my-2 d-flex">
             <div class="card">

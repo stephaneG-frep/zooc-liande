@@ -4,13 +4,13 @@
 ?>
 <div class="container  px-4 py-5">
     <div class="row text-center">
-        <h1>Le personnel de notre zoo et aussi une famille </h1>
+        <h1 style="color: #F0997D;">Le personnel de notre zoo et aussi une famille </h1>
 
         
             <div class="col-md-4 my-2 d-flex">
                 <div class="card">
                     <div class="card-header" style="background: #3A8891;">
-                        <img src="uploads/images/homme2.jpg" alt="image employer" width="300" height="200"
+                        <img src="uploads/images/homme2.jpg" alt="image employer" width="300" height="250"
                             class="card-img-bottom rounded rounded-4 ">
                     </div>
                     <div class="card-body" style="background: #799351;">
@@ -31,7 +31,7 @@
             <div class="col-md-4 my-2 d-flex">
                 <div class="card">
                     <div class="card-header" style="background: #3A8891;">
-                        <img src="uploads/images/homme2.jpg" alt="image employer" width="300" height="200"
+                        <img src="uploads/images/homme2.jpg" alt="image employer" width="300" height="250"
                             class="card-img-bottom rounded rounded-4 ">
                     </div>
                     <div class="card-body" style="background: #799351;">
@@ -52,7 +52,7 @@
             <div class="col-md-4 my-2 d-flex">
                 <div class="card">
                     <div class="card-header" style="background: #3A8891;">
-                        <img src="uploads/images/homme2.jpg" alt="image employer" width="300" height="200"
+                        <img src="uploads/images/homme2.jpg" alt="image employer" width="300" height="250"
                             class="card-img-bottom rounded rounded-4 ">
                     </div>
                     <div class="card-body" style="background: #799351;">

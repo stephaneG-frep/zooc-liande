@@ -7,7 +7,7 @@
 ?>
 
 <div class="container px-4 py-5" id="custom-cards">
-        <h2 class="pb-2 border-bottom">Bienvenu a ZOOCELIANDE...</h2>
+        <h1 class="pb-2 border-bottom" style="color: #ED7D31;">Bienvenu a ZOOCELIANDE...</h1>
 
         <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
             <div class="col">
