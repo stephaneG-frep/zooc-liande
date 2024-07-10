@@ -1,13 +1,14 @@
 </main>
-<div class="container" style="background: #9E4784;">
-    <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">© 2017–2021 Company Name</p>
-        <ul class="list-inline">
-            <li class="list-none-item"><a href="#">Privacy</a></li>
-            <li class="list-inline-item"><a href="#">Terms</a></li>
-            <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-    </footer>
+<div class="container" style="background: #90D26D ;">
+  <footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="home.php" class="nav-link px-2 text-body-secondary">Accueil</a></li>
+      <li class="nav-item"><a href="animaux.php" class="nav-link px-2 text-body-secondary">Les animaux</a></li>
+      <li class="nav-item"><a href="animation.php" class="nav-link px-2 text-body-secondary">Les animations</a></li>
+      <li class="nav-item"><a href="photo.php" class="nav-link px-2 text-body-secondary">Les photos</a></li>
+    </ul>
+    <p class="text-center text-body-secondary">© 2024 Company, Inc -Nabucodeonothers-</p>
+  </footer>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
