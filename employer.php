@@ -1,7 +1,24 @@
 <?php 
+    require_once __DIR__. "/lib/employer.php";
     require_once __DIR__. "/templates/header.php";
-     require_once __DIR__. "/templates/body_pages.php"
+    require_once __DIR__. "/templates/body_pages.php";
+
+     $employers = getEmployer($pdo);
 ?>
+
+<div class="container px-4 py-5">
+
+    <div class="row text-center">
+        <h1 style="color: #F7DB6A;">Nos amis les employers</h1>
+
+
+        <div class="row mx-2">
+    <?php foreach($employers as $key => $employer) {
+            include("templates/employer_partial.php");
+        }?>
+</div>
+
+<!--
 <div class="container  px-4 py-5">
     <div class="row text-center">
         <h1 style="color: #F0997D;">Le personnel de notre zoo et aussi une famille </h1>
@@ -72,7 +89,7 @@
 
     </div>
 </div>
-
+    -->
 
 
 <?php

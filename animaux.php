@@ -1,8 +1,9 @@
 <?php 
    require_once __DIR__. "/templates/header.php";
    require_once __DIR__. "/templates/body_home.php";
+   require_once __DIR__. "/lib/animaux.php";
     
-
+   $animaux = getAnimaux($pdo);
    
 ?>
 <div class="container px-4 py-5">
@@ -10,7 +11,15 @@
     <div class="row text-center">
         <h1 style="color: #F7DB6A;">Nos amis les animaux</h1>
 
-        <div class="col-md-4 my-2 d-flex">
+
+        <div class="row mx-2">
+    <?php foreach($animaux as $key => $animal) {
+            include("templates/animaux_partial.php");
+        }?>
+</div>
+
+
+<!--       <div class="col-md-4 my-2 d-flex">
             <div class="card">
                 <div class="card-header" style="background: #3A8891;">
                     <img src="uploads/images/lion.jpg" alt="image du lion" width="300" height="400"
@@ -74,7 +83,7 @@
         </div>
     </div> 
 
-
+-->
 </div>
 
 

@@ -1,8 +1,8 @@
 <?php
 
-define("_RECIPES_IMG_PATH_", "uploads/images/");
+define("_ZOO_IMG_PATH_", "uploads/images/");
 define("_ASSETS_IMG_PATH_", "assets/images/");
-define('_HOME_RECIPES_LIMIT_', 6);
+define('_HOME_ANIMAUX_LIMIT_', 3);
 
 $mainMenu = [
     "home.php" => "Accueil",
