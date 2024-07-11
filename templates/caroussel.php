@@ -1,11 +1,11 @@
-<?php 
-    require_once __DIR__. "/templates/header.php";
-     require_once __DIR__. "/templates/body_pages.php"
+<?php   
+   require_once __DIR__. "/header.php";
+   require_once __DIR__. "/body_home.php";
+
 ?>
-<div class="container px-5 py-5 mx-4 my-4" <div class="row text-center">
-    <h1>Les photos</h1>
 
 
+<div class="container">
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-indicators">
@@ -18,10 +18,10 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item">
-                <img src="uploads/images/orang-outan.jpg" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                     <rect width="100%" height="100%" fill="#777"></rect>
-                
+                </svg>
 
                 <div class="container">
                     <div class="carousel-caption text-start">
@@ -32,10 +32,10 @@
                 </div>
             </div>
             <div class="carousel-item active">
-                <img src="uploads/images/bbfélin.jpg" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                     <rect width="100%" height="100%" fill="#777"></rect>
-            
+                </svg>
 
                 <div class="container">
                     <div class="carousel-caption">
@@ -46,10 +46,10 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="uploads/images/papalion.jpg" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                     <rect width="100%" height="100%" fill="#777"></rect>
-                
+                </svg>
 
                 <div class="container">
                     <div class="carousel-caption text-end">
@@ -70,7 +70,7 @@
         </button>
     </div>
 </div>
-</div>
-<?php 
-   require_once __DIR__. "/templates/footer.php";
+
+<?php
+    require_once __DIR__. "/footer.php";
 ?>

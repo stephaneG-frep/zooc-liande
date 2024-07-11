@@ -20,7 +20,7 @@ $category = getCategories($pdo);
                 height="500" loading="lazy">
         </div>
         <div class="col-lg-6 py-4 px-4" style=" background-color:cornsilk">
-            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"><?=$employer["firstname"]. " ".$employer['lastname']. "ans"; ?></h1>
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"><?=$employer["firstname"]. " ".$employer['lastname']; ?></h1>
             <hr>
             <p class="lead" ><strong><?=$employer["job"]; ?></strong></p>
         </div>
