@@ -44,7 +44,7 @@ $totalPages = ceil($totalAnimaux / _ADMIN_ITEM_PER_PAGE_);
             <td><?=$animal['name']?></td>
             <td><?=$animal['age']?></td>
             <td><?=$animal['description']?></td>
-            <td><a href="animaux.php?id=<?= $animal['id'] ?>">Modifier</a>
+            <td><a href="animaul.php?id=<?= $animal['id'] ?>">Modifier</a>
              <a href="animaux_delete.php?id=<?= $animal['id'] ?>" 
               onclick="return confirm('Êtes-vous sûr de vouloir supprimercet animal ?')">Supprimer</a>
         </td>

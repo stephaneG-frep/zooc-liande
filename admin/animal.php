@@ -66,7 +66,7 @@ if (isset($_POST['saveAnimaux'])) {
         }
     }
     // Tous stocker dans un tableau pour afficher les infos et ne pas les perdre si il y a une erreur
-    $article = [
+    $animal = [
         'race' => $_POST['race'],
         'name' => $_POST['name'],
         'age' => $_POST['age'],
@@ -91,7 +91,7 @@ if (isset($_POST['saveAnimaux'])) {
             $messages[] = "Article bien enregistré";
             // Vider le formulaire
             if (!isset($_GET['id'])) {
-                $article = [
+                $animal = [
                     'race' => '',
                     'name' => '',
                     'age' => '',
