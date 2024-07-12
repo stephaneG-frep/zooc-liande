@@ -9,5 +9,6 @@ $mainMenu = [
     "animaux.php" => "Nos animaux",
     "employer.php" =>"Nos employers",
     "a_propos.php" => "A-propos",
-    "ajout_modification_recettes.php" => "ajout/modif_recette",
+    "photo.php" => "photos",
+    //"ajout_modification_recettes.php" => "ajout/modif_recette",
 ];

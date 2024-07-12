@@ -2,7 +2,7 @@
    require_once __DIR__. "/../lib/session.php";
    require_once __DIR__. "/../lib/pdo.php";
    require_once __DIR__. "/../lib/config.php";
-   //require_once __DIR__. "/../lib/user.php";
+   require_once __DIR__. "/../lib/user.php";
 
  
    $currentPage = basename($_SERVER['SCRIPT_NAME']);      
@@ -29,26 +29,29 @@
     <header
         class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
         <a href="home.php" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-            <img src="uploads/images/logo_zoo.jpg" class="rounded rounded-5" alt="logo du site" width="200" height="120">
+            <img src="uploads/images/logo_zoo.jpg" class="rounded rounded-5" alt="logo du site" width="140" height="90">
         </a>
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="home.php" class="nav-link px-2 link-secondary">Home</a></li>
-            <li><a href="animaux.php" class="nav-link px-2 link-dark">Les animaux</a></li>
-            <li><a href="employer.php" class="nav-link px-2 link-dark">Le personnel</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-            <li><a href="a_propos.php" class="nav-link px-2 link-dark">A-propos</a></li>
+            <?php foreach ($mainMenu as $key => $value) {?>
+                <li class="fw-bold nav-item"><a href="<?=$key;?>" 
+                    class="nav-link <?php if ($currentPage === $key) { echo 'active'; } ?>"><?=$value; ?></a></li>
+                    
+            <?php }?>
+            
         </ul>
 
         <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2">Login</button>
-            <button type="button" class="btn btn-primary">Sign-up</button>
-        </div>
+                <?php if (isset($_SESSION['user'])) {?>
+                <a href="logout.php" class="btn btn-outline-primary me-2">Déconnexion</a>
+                
+                <?php } else { ?>
+                <a href="login.php" class="btn btn-outline-primary me-2">Connexion</a>
+                <a href="inscription.php" class="btn btn-primary">Inscription</a>
+                <?php }?>
+            </div>
     </header>
 </div>
 
-<!-- <body style="background:#125C13;">   /zoo/index.php?controller=animaux&action=show -->
-<!-- <body style="background:#1D5B79;"> -->
-<!-- <body style="background-image: url('uploads/books/cascade.jpeg');"> -->
 
     <main>

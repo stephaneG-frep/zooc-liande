@@ -48,7 +48,7 @@
                     <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Quelques petits animation a faire en famille </h2>
                     <ul class="d-flex list-unstyled mt-auto">
                         <li class="me-auto">
-                            <a href="animaux.php" class="btn btn-primary">Les animations</a>
+                            <a href="animation.php" class="btn btn-primary">Les animations</a>
                         </li>
 
                     </ul>
