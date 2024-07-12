@@ -41,7 +41,7 @@ adminOnly();
                 </li>
                 
                 <li>
-                    <a href="articles.php" class="nav-link text-white">
+                    <a href="animaux.php" class="nav-link text-white">
                        <i class="bi bi-table"></i>
                         </svg>
                         Animaux
@@ -49,7 +49,7 @@ adminOnly();
                 </li>
 
                 <li>
-                    <a href="articles.php" class="nav-link text-white">
+                    <a href="employers.php" class="nav-link text-white">
                        <i class="bi bi-table"></i>
                         </svg>
                         Employers
