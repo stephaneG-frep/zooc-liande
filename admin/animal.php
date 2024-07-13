@@ -17,9 +17,11 @@ $animal = [
    'age' => '',
    'description' => '',
    'category_id' => '',
+   'image' => '',
 ];
 
 $categories = getCategories($pdo);
+
 
 if (isset($_GET['id'])) {
     //récuperation de l'animal pour modif..
@@ -32,7 +34,7 @@ if (isset($_GET['id'])) {
     $pageTitle = "Formulaire ajout d'animaux";
 }
 
-if (isset($_POST['saveAnimaux'])) {
+if (isset($_POST['saveAnimal'])) {
 
     $fileName = null;
     // si il y a un fichier envoyé
@@ -43,11 +45,8 @@ if (isset($_POST['saveAnimaux'])) {
             $fileName = uniqid() . '-' . $fileName;
  
            // déplacer le fichier uploader (__DIR__) dans le dossier parent (admin)
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], dirname(__DIR__). _ANIMAUX_IMAGES_FOLDER_ . $fileName )) {
-                if (isset($_POST['image'])) {
-                    // suppréssion de l'ancienne image par la nouvelle
-                    unlink(dirname(__DIR__)._ANIMAUX_IMAGES_FOLDER_ . $_POST['image']);
-                }
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], _ANIMAUX_IMAGES_FOLDER_ . $fileName )) {
+                
             } else {
                 $errors[] = "Le fichier non ulpoadé";
             }
@@ -85,10 +84,10 @@ if (isset($_POST['saveAnimaux'])) {
             $id = null;
         }
         // On sauvegarde en BDD avec la fonction saveArticle
-        $res = saveAnimaux($pdo, $_POST["race"], $_POST["name"], $_POST['age'], $_POST['description'], $fileName, (int)$_POST["category_id"], $id);
+        $res = saveAnimal($pdo, $_POST["race"], $_POST["name"], $_POST['age'], $_POST['description'], $fileName, (int)$_POST["category_id"], $id);
 
         if ($res) {
-            $messages[] = "Article bien enregistré";
+            $messages[] = "Animal bien enregistré";
             // Vider le formulaire
             if (!isset($_GET['id'])) {
                 $animal = [
@@ -96,7 +95,8 @@ if (isset($_POST['saveAnimaux'])) {
                     'name' => '',
                     'age' => '',
                     'description' => '',
-                    'category_id' => ''
+                    'category_id' => '',
+                    'image' => ''
                 ];
             }
         } else {
@@ -109,61 +109,65 @@ if (isset($_POST['saveAnimaux'])) {
 <h1><?= $pageTitle; ?></h1>
 
 <?php foreach ($messages as $message) { ?>
-    <div class="alert alert-success" role="alert">
-        <?= $message; ?>
-    </div>
+<div class="alert alert-success" role="alert">
+    <?= $message; ?>
+</div>
 <?php } ?>
 <?php foreach ($errors as $error) { ?>
-    <div class="alert alert-danger" role="alert">
-        <?= $error; ?>
-    </div>
+<div class="alert alert-danger" role="alert">
+    <?= $error; ?>
+</div>
 <?php } ?>
 <?php if ($animal !== false) { ?>
-    <form method="POST" enctype="multipart/form-data">
-        <div class="mb-3">
-            <label for="race" class="form-label">Race</label>
-            <input type="text" class="form-control" id="race" name="race" value="<?= $animal['race']; ?>">
-        </div>
-        
-        <div class="mb-3">
-            <label for="name" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="name" name="name" value="<?= $animal['name']; ?>">
-        </div>
+<form method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="race" class="form-label">Race</label>
+        <input type="text" class="form-control" id="race" name="race" value="<?= $animal['race']; ?>">
+    </div>
 
-        <div class="mb-3">
-            <label for="age" class="form-label">Age</label>
-            <input type="text" class="form-control" id="age" name="age" value="<?= $animal['age']; ?>">
-        </div>
+    <div class="mb-3">
+        <label for="name" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="name" name="name" value="<?= $animal['name']; ?>">
+    </div>
 
-        <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" name="description" rows="8"><?= $animal['description']; ?></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="category" class="form-label">Catégorie</label>
-            <select name="category_id" id="category" class="form-select">
-                <?php foreach ($categories as $category) { ?>
-                    <option value="1" <?php if (isset($animal['category_id']) && $animal['category_id'] == $category['id']) { ?>selected="selected" <?php }; ?>><?= $category['espece'] ?></option>
-                <?php } ?>
-            </select>
-        </div>
+    <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="text" class="form-control" id="age" name="age" value="<?= $animal['age']; ?>">
+    </div>
 
-        <?php if (isset($_GET['id']) && isset($animal['image'])) { ?>
-            <p>
-                <img src="<?= _ANIMAUX_IMAGES_FOLDER_ . $animal['image'] ?>" alt="<?= $animal['race'] ?>" width="100">
-                <label for="delete_image">Supprimer l'image</label>
-                <input type="checkbox" name="delete_image" id="delete_image">
-                <input type="hidden" name="image" value="<?= $animal['image']; ?>">
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description"
+            rows="8"><?= $animal['description']; ?></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="category" class="form-label">Catégorie</label>
+        <select name="category_id" id="category" class="form-select">
+            <?php foreach ($categories as $category) { ?>
+            <option value="1"
+                <?php if (isset($animal['category_id']) && $animal['category_id'] == $category['id']) { ?>selected="selected"
+                <?php }; ?>><?= $category['espece'] ?></option>
+            <?php } ?>
+        </select>
+    </div>
 
-            </p>
-        <?php } ?>
-        <p>
-            <input type="file" name="file" id="file">
-        </p>
 
-        <input type="submit" name="saveArticle" class="btn btn-primary" value="Enregistrer">
 
-    </form>
+    <?php if (isset($_GET['id'])) { ?>
+    <p>
+        <img src="<?= _ANIMAUX_IMAGES_FOLDER_.$animal['image'] ?>" alt="<?= $animal['race'] ?>" width="100">
+        <label for="delete_image">Supprimer l'image</label>
+        <input type="checkbox" name="delete_image" id="delete_image">
+        <input type="hidden" name="image" value="<?=$animal['image']; ?>">
+    </p>
+    <?php }  ?>
+    <p>
+        <input type="file" name="file" id="file">
+    </p>
+
+    <input type="submit" name="saveAnimal" class="btn btn-primary" value="Enregistrer">
+
+</form>
 
 <?php } ?>
 

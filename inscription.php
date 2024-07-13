@@ -43,22 +43,22 @@
 
          <div class="mb-3">
             <label for="text" class="form-label">Votre Prénom : </label>
-            <input type="text" name="firstname" id="firstname" class="form-control">
+            <input type="text" name="firstname" id="firstname" class="form-control" required>
         </div>
 
         <div class="mb-3">
             <label for="text" class="form-label">Votre Nom : </label>
-            <input type="text" name="lastname" id="lastname" class="form-control">
+            <input type="text" name="lastname" id="lastname" class="form-control" required>
         </div>
 
         <div class="mb-3">
             <label for="email" class="form-label">Votre Email : </label>
-            <input type="email" name="email" id="email" class="form-control">
+            <input type="email" name="email" id="email" class="form-control" required>
         </div>
 
         <div class="mb-3">
             <label for="password" class="form-label">Votre mot-de-passe : </label>
-            <input type="password" name="password" id="password" class="form-control">
+            <input type="password" name="password" id="password" class="form-control" required>
         </div>
         <input type="submit" value="Enregister" name="addUser" class="btn btn-primary">
 

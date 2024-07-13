@@ -15,7 +15,7 @@
     if ($image === null) {
       return _ASSETS_IMG_PATH_."groupe.jpg";
     } else {
-      return _ZOO_IMG_PATH_.$image;
+      return _ANIMAUX_IMAGES_FOLDER_.$image;
     }
   } 
 
@@ -50,8 +50,8 @@ function getTotalAnimaux(PDO $pdo):int
 
 function saveAnimaux(PDO $pdo, int $category_id, string $race, string $name, string $age, string $description, string|null $image) 
 {
-  $sql = "INSERT INTO `animaux` (`id`, `category_id`, `employer_id`, `image_id`,  `race`, `name`, `age`, `description`, `image`)
-           VALUES (NULL, :category_id, :employer_id, :image_id, :race, :name, :age, :description, :image);";
+  $sql = "INSERT INTO `animaux` (`id`, `category_id`, `race`, `name`, `age`, `description`, `image`)
+           VALUES (NULL, :category_id, :race, :name, :age, :description, :image);";
   $query = $pdo->prepare($sql);
   $query->bindParam(':category_id', $category_id, PDO::PARAM_INT);
   $query->bindParam(':race', $race, PDO::PARAM_STR);
@@ -72,6 +72,38 @@ function deleteAnimaux(PDO $pdo, int $id):bool
     $query->execute();
     if ($query->rowCount() > 0) {
         return true;
+    } else {
+        return false;
+    }
+}
+
+function saveAnimal(PDO $pdo, int $category_id, string $race, string $name, string $age, string $description, string $image, int $id=null)
+{
+    if ($id) {
+        // UPDATE
+        $query = $pdo->prepare("UPDATE animaux SET  category_id = :category_id, race = :race, name = :name,
+                                age = :age, description = :description, image = :image,
+                                WHERE id = :id");
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+    } else {
+        // INSERT
+        $query = $pdo->prepare("INSERT INTO animaux (category_id, race, name, age, description, image)
+                                VALUES (:category_id, :race, :name, :age, :description, :image)");
+    }
+    $query->bindParam(':category_id', $category_id, PDO::PARAM_INT);
+  $query->bindParam(':race', $race, PDO::PARAM_STR);
+  $query->bindParam(':name', $name, PDO::PARAM_STR);
+  $query->bindParam(':age', $age, PDO::PARAM_STR);
+  $query->bindParam(':description', $description, PDO::PARAM_STR);
+  $query->bindParam(':image', $image, PDO::PARAM_STR);
+
+    $res = $query->execute();
+    if ($res) {
+        if ($id) {
+            return $id;
+        } else {
+            return $pdo->lastInsertId();
+        }
     } else {
         return false;
     }

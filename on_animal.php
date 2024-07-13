@@ -20,7 +20,7 @@ $category = getCategories($pdo);
                 height="500" loading="lazy">
         </div>
         <div class="col-lg-6 py-4 px-4" style=" background-color:cornsilk">
-            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"><?=$animal["name"]. " ".$animal['age']. "ans"; ?></h1>
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"><?=$animal["name"]. " ".$animal['age']. "ans  de l'espèce".$category['espece']; ?></h1>
             <hr>
             <p class="lead" ><strong><?=$animal["description"]; ?></strong></p>
         </div>

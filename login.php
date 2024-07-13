@@ -26,27 +26,10 @@
         }
     }
 
-
+?>
    
 
-    /*
-    if (isset($_POST['loginUser'])) {
-
-        $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
-         if ($user) {
-           $_SESSION['user'] = ['email' => $user['email']];
-           if ($user['role'] === "user") {
-              header('location: home.php');
-           } elseif ($user['role'] === "admin") {
-               header('location: /admin/index.php');
-          }
-         } else {
-            $errors[] = " Une erreur est survenue vérifier vos M-D-P et EMAIL !!";
-         }
-    }
-    */
-?>
-
+   
 <div class="container col-xxl-8 px-4 py-5 ">
     <h1>Connexion</h1>
 

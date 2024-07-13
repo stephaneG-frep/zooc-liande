@@ -7,7 +7,7 @@
                 <div class="card-body" style="background: #799351;">
                     <h3 class="card-title" style="color: #EAECCC ;"><?=$employer['firstname']?> <?=$employer['lastname'] ?></h3>
                     <hr>
-                    <p class="card-text" style="color: #EAECCC ;"><?=$employer['job']?></p>
+                    
                     <a href="on_employer.php?id=<?=$employer['id'];?>" class="btn btn-primary">Voir</a>
                 </div>
             </div>

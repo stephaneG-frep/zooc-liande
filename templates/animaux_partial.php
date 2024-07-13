@@ -7,7 +7,7 @@
                 <div class="card-body" style="background: #799351;">
                     <h3 class="card-title" style="color: #EAECCC ;">Je m'appel <?=$animal['name']?> et j'ai <?=$animal['age'] ?> ans</h3>
                     <hr>
-                    <p class="card-text" style="color: #EAECCC ;"><?=$animal['description']?></p>
+                   
                     <a href="on_animal.php?id=<?=$animal['id'];?>" class="btn btn-primary">Voir</a>
                 </div>
             </div>

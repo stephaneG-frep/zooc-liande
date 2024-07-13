@@ -15,7 +15,7 @@
     if ($image === null) {
       return _ASSETS_IMG_PATH_."groupe.jpg";
     } else {
-      return _ZOO_IMG_PATH_.$image;
+      return _ANIMAUX_IMAGES_FOLDER_.$image;
     }
   } 
 
