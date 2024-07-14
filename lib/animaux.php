@@ -15,7 +15,7 @@
     if ($image === null) {
       return _ASSETS_IMG_PATH_."groupe.jpg";
     } else {
-      return _ANIMAUX_IMAGES_FOLDER_.$image;
+      return _ANIMAUX_IMAGES_FOLDER_.htmlentities($image);
     }
   } 
 
@@ -46,29 +46,10 @@ function getTotalAnimaux(PDO $pdo):int
     return $result['total'];
 }
 
-
-
-function saveAnimaux(PDO $pdo, int $category_id, string $race, string $name, string $age, string $description, string|null $image) 
-{
-  $sql = "INSERT INTO `animaux` (`id`, `category_id`, `race`, `name`, `age`, `description`, `image`)
-           VALUES (NULL, :category_id, :race, :name, :age, :description, :image);";
-  $query = $pdo->prepare($sql);
-  $query->bindParam(':category_id', $category_id, PDO::PARAM_INT);
-  $query->bindParam(':race', $race, PDO::PARAM_STR);
-  $query->bindParam(':name', $name, PDO::PARAM_STR);
-  $query->bindParam(':age', $age, PDO::PARAM_STR);
-  $query->bindParam(':description', $description, PDO::PARAM_STR);
-  $query->bindParam(':image', $image, PDO::PARAM_STR);
-  return $query->execute();
-  
-}
-
 function deleteAnimaux(PDO $pdo, int $id):bool
-{
-    
+{  
     $query = $pdo->prepare("DELETE FROM animaux WHERE id = :id");
     $query->bindValue(':id', $id, $pdo::PARAM_INT);
-
     $query->execute();
     if ($query->rowCount() > 0) {
         return true;
@@ -77,27 +58,30 @@ function deleteAnimaux(PDO $pdo, int $id):bool
     }
 }
 
-function saveAnimal(PDO $pdo, int $category_id, string $race, string $name, string $age, string $description, string $image, int $id=null)
+function saveAnimal(PDO $pdo, int $category_id, string $race, string $name, string $age, string $description, string|null $image, int $id = null):bool
 {
     if ($id) {
         // UPDATE
-        $query = $pdo->prepare("UPDATE animaux SET  category_id = :category_id, race = :race, name = :name,
-                                age = :age, description = :description, image = :image,
-                                WHERE id = :id");
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query = $pdo->prepare("UPDATE `animaux`SET `category_id` = :category_id, `race` = :race, `name` = :name,
+                                `age` = :age, `description` = :description, `image` = :image,
+                                WHERE `id` = :id");
+        $query->bindValue(':id', $id, $pdo::PARAM_INT);
     } else {
         // INSERT
-        $query = $pdo->prepare("INSERT INTO animaux (category_id, race, name, age, description, image)
-                                VALUES (:category_id, :race, :name, :age, :description, :image)");
+        $query = $pdo->prepare("INSERT INTO animaux (id, category_id, race, name, age, description, image)
+                                VALUES (NULL, :category_id, :race, :name, :age, :description, :image)");
     }
-    $query->bindParam(':category_id', $category_id, PDO::PARAM_INT);
-  $query->bindParam(':race', $race, PDO::PARAM_STR);
-  $query->bindParam(':name', $name, PDO::PARAM_STR);
-  $query->bindParam(':age', $age, PDO::PARAM_STR);
-  $query->bindParam(':description', $description, PDO::PARAM_STR);
-  $query->bindParam(':image', $image, PDO::PARAM_STR);
+        $query->bindParam(':category_id', $category_id, $pdo::PARAM_INT);
+        $query->bindParam(':race', $race, $pdo::PARAM_STR);
+        $query->bindParam(':name', $name, $pdo::PARAM_STR);
+        $query->bindParam(':age', $age, $pdo::PARAM_STR);
+        $query->bindParam(':description', $description, $pdo::PARAM_STR);
+        $query->bindParam(':image', $image, $pdo::PARAM_STR);
+        
+        return $query->execute();
 
-    $res = $query->execute();
+        /*
+        $res = $query->execute();
     if ($res) {
         if ($id) {
             return $id;
@@ -107,4 +91,7 @@ function saveAnimal(PDO $pdo, int $category_id, string $race, string $name, stri
     } else {
         return false;
     }
+    */
 }
+
+

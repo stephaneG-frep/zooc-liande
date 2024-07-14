@@ -14,7 +14,7 @@ $messages = [];
 if (isset($_GET["id"])) {
     $animal =  getAnimauxById($pdo, (int)$_GET["id"]);
 }
-if ($article) {
+if ($animal) {
     if (deleteAnimaux($pdo, $_GET["id"])) {
         $messages[] = "L'animal a bien été supprimé";
     } else {

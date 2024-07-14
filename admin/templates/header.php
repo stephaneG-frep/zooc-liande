@@ -49,7 +49,7 @@ adminOnly();
                 </li>
 
                 <li>
-                    <a href="newAnimal.php" class="nav-link text-white">
+                    <a href="addAnimal.php" class="nav-link text-white">
                        <i class="bi bi-table"></i>
                         </svg>
                         Nouvel Animal:

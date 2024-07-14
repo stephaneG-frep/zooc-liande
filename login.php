@@ -22,7 +22,7 @@
                 header("location: admin/index.php");
            }
         } else {
-            $erros[] = "Email ou mot-de-passe incorrect !!";
+            $errors[] = "Email ou mot-de-passe incorrect !!";
         }
     }
 
