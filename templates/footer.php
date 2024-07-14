@@ -5,7 +5,7 @@
       <li class="nav-item"><a href="home.php" class="nav-link px-2 text-body-secondary">Accueil</a></li>
       <li class="nav-item"><a href="animaux.php" class="nav-link px-2 text-body-secondary">Les animaux</a></li>
       <li class="nav-item"><a href="animation.php" class="nav-link px-2 text-body-secondary">Les animations</a></li>
-      <li class="nav-item"><a href="photo.php" class="nav-link px-2 text-body-secondary">Les photos</a></li>
+      <li class="nav-item"><a href="a_propos.php" class="nav-link px-2 text-body-secondary">A-propos</a></li>
     </ul>
     <p class="text-center text-body-secondary">© 2024 Company, Inc -Nabucodeonothers-
        <img src="uploads/images/logo_zoo.jpg" class="rounded rounded-5" alt="logo du site" width="180" height="90">

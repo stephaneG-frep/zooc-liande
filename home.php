@@ -7,7 +7,9 @@
 ?>
 
 <div class="container py-4 px-5" id="custom-cards">
-    <h1 class="pb-2 border-bottom" style="color: #ED7D31;">Bienvenu a ZOOCELIANDE...</h1>
+    <h1 class="pb-2 border-bottom" style="color: #ED7D31;">Bienvenu a ZOOCELIANDE...
+        <img src="uploads/images/logo_zoo.jpg" class="rounded rounded-5" alt="logo du site" width="140" height="90">
+    </h1>
 
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
         <div class="col">
@@ -16,10 +18,12 @@
                 <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
                     <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Pour voir toutes les photos de nos amis</h2>
                     <ul class="d-flex list-unstyled mt-auto">
-                        <li class="me-auto">
+                        <li class="me-auto py-2 px-2">
                             <a href="animaux.php" class="btn btn-primary">Voir les animaux</a>
                         </li>
-
+                        <li class="me-auto py-2 px-2">
+                            <a href="employer.php" class="btn btn-primary ">Mais qui s'occupe des animaux ??</a>
+                        </li>
                     </ul>
                 </div>
             </div>

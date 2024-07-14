@@ -8,9 +8,6 @@ define("_ANIMAUX_IMAGES_FOLDER_", "uploads/images/");
 
 $mainMenu = [
     "home.php" => "Accueil",
-    "animaux.php" => "Nos animaux",
-    "employer.php" =>"Nos employers",
-    "a_propos.php" => "A-propos",
     "photo.php" => "photos",
     "newAnimal.php" => "add/animaux",
     //"ajout_modification_recettes.php" => "ajout/modif_recette",
