@@ -4,7 +4,7 @@ require_once('lib/session.php');
 require_once('templates/header.php');
 
 if(!isset($_SESSION['user'])) {
-    header('location: login.php');
+    header('location: home.php'); 
 }
 
 require_once('lib/pdo.php');
@@ -131,7 +131,7 @@ if (isset($_POST['addAnimal'])) {
             <label for="file" class="form-label">Image</label>
             <input type="file" name="file" id="file">
         </div>
-        <input type="submit" value="Enregistrer" name="saveRecipe" class="btn btn-primary">
+        <input type="submit" value="Enregistrer" name="addAnimal" class="btn btn-primary">
 
 
     </form>
