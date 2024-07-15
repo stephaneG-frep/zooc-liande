@@ -1,18 +1,21 @@
 <?php
-require_once('lib/config.php');
-require_once('lib/session.php');
-require_once('templates/header.php');
+require_once('../lib/config.php');
+require_once('../lib/session.php');
+adminOnly();
 
+
+require_once('templates/header.php');
+/*
 if(!isset($_SESSION['user'])) {
     header('location: home.php'); 
-}
+}*/
 
-require_once('lib/pdo.php');
-require_once('lib/tools.php');
-require_once('lib/animaux.php');
-require_once('lib/animal_pdo.php');
-require_once('lib/category.php');
-require_once('lib/photo.php');
+require_once('../lib/pdo.php');
+require_once('../lib/tools.php');
+require_once('../lib/animaux.php');
+require_once('../lib/animal_pdo.php');
+require_once('../lib/category.php');
+require_once('../lib/photo.php');
 
 
 
