@@ -6,7 +6,7 @@ adminOnly();
 require_once __DIR__. "/templates/header.php";
 require_once __DIR__. "/../lib/pdo.php";
 require_once __DIR__. "/../lib/animaux.php";
-require_once __DIR__. "/../lib/category.php";
+
 
 
 if (isset($_GET['page'])) {
@@ -31,10 +31,6 @@ $totalPages = ceil($totalAnimaux / _ADMIN_ITEM_PER_PAGE_);
         <tr>
             <th scope="col">#</th>
             <th scope="col">Race</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Age</th>
-            <th scope="col">Description</th>
-            <th scope="col">Espèce</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -42,13 +38,9 @@ $totalPages = ceil($totalAnimaux / _ADMIN_ITEM_PER_PAGE_);
         <?php foreach($animaux as $animal) {?>
         <tr>
             <th scope="row"><?=$animal['id']?></th>
-            <td><?=$animal['race']?></td>
-            <td><?=$animal['name']?></td>
-            <td><?=$animal['age']?></td>
-            <td><?=$animal['description']?></td>
-            <td><?=$animal['category_id']?></td>
+            <td><?=$animal['race']?></td>           
             <td><a href="animal.php?id=<?= $animal['id'] ?>">Modifier</a>
-            <a href="animal.php">Add</a>
+            <a href="animal.php">Add</a>         
              <a href="animaux_delete.php?id=<?= $animal['id'] ?>" 
               onclick="return confirm('Êtes-vous sûr de vouloir supprimercet animal ?')">Supprimer</a>
         </td>

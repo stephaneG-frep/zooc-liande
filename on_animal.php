@@ -1,6 +1,7 @@
 <?php 
 
 require_once __DIR__. "/lib/animaux.php";
+require_once __DIR__. "/lib/photo.php";
 require_once __DIR__. "/lib/category.php";
 require_once __DIR__. "/lib/tools.php";
 require_once __DIR__. "/templates/header.php";
@@ -9,6 +10,7 @@ require_once __DIR__. "/templates/body_home.php";
 $id = (int)$_GET["id"];
 $animal = getAnimauxById($pdo, $id);
 $category = getCategories($pdo);
+
 
 
 ?>

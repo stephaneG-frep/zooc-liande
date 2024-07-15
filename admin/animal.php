@@ -41,8 +41,15 @@ if (isset($_POST['saveAnimal'])) {
         $checkImage = getimagesize($_FILES["file"]["tmp_name"]);
         if ($checkImage !== false) {
             // si c'est une image on envoie dans le bon fichier avec prefix unique et slugify
-            $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
-            move_uploaded_file($_FILES['file']['tmp_name'], _ANIMAUX_IMAGES_FOLDER_.$fileName);
+            $fileName = slugify(basename($_FILES["file"]["name"]));
+            $fileName = uniqid() . '-' . $fileName;
+
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], dirname(__DIR__). _ANIMAUX_IMAGES_FOLDER_. $fileName )) {
+                if (isset($_POST['image'])) {
+                    // suppréssion de l'ancienne image par la nouvelle
+                    unlink(dirname(__DIR__)._ANIMAUX_IMAGES_FOLDER_ . $_POST['image']);
+                }
+
         } else {
             $errors[] = "Le fichier non ulpoadé";
         }
@@ -67,6 +74,7 @@ if (isset($_POST['saveAnimal'])) {
         'name' => $_POST['name'],
         'age' => $_POST['age'],
         'description' => $_POST['description'],
+        'image' => $fileName
         ];
 
      // saugarde si pas erreur
@@ -79,7 +87,7 @@ if (isset($_POST['saveAnimal'])) {
             $id = null;
         }
         // On sauvegarde en BDD avec la fonction saveArticle
-        $res = saveAnimal($pdo, (int)$_POST["category_id"], $_POST["race"], $_POST["name"], $_POST['age'], $_POST['description'], $fileName);
+        $res = saveAnimal($pdo, (int)$_POST["category_id"], $_POST["race"], $_POST["name"], $_POST['age'], $_POST['description'], $fileName, $id);
 
         if ($res) {
             $messages[] = "Animal bien enregistré";
@@ -97,6 +105,7 @@ if (isset($_POST['saveAnimal'])) {
             $errors[] = "Animal non enregistré";
         }
     }
+}   
 ?>
 
 <h1><?= $pageTitle; ?></h1>
@@ -133,9 +142,10 @@ if (isset($_POST['saveAnimal'])) {
         <textarea class="form-control" id="description" name="description"
             rows="8"><?= $animal['description']; ?></textarea>
     </div>
+    
     <div class="mb-3">
         <label for="category" class="form-label">Catégorie</label>
-        <select name="category" id="category" class="form-select">
+        <select name="category_id" id="category" class="form-select">
             <?php foreach ($categories as $category) { ?>
             <option value="1"
                 <?php if (isset($animal['category_id']) && $animal['category_id'] == $category['id']) { ?>selected="selected"
@@ -146,16 +156,16 @@ if (isset($_POST['saveAnimal'])) {
 
 
 
-    <?php if (isset($_GET['id'])) { ?>
+    <?php if (isset($_GET['id']) && isset($animal['image'])) { ?>
     <p>
-        <img src="<?= _ANIMAUX_IMAGES_FOLDER_.$animal['image'] ?>" alt="<?= $animal['race'] ?>" width="100">
+        <img src="<?= _ANIMAUX_IMAGES_FOLDER_ . $animal['image'] ?>" alt="<?= $animal['race'] ?>" width="100">
         <label for="delete_image">Supprimer l'image</label>
         <input type="checkbox" name="delete_image" id="delete_image">
         <input type="hidden" name="image" value="<?=$animal['image']; ?>">
     </p>
     <?php }  ?>
     <p>
-        <label for="file" class="form-label">Image</label>
+
         <input type="file" name="file" id="file">
     </p>
 

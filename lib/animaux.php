@@ -25,15 +25,17 @@
     if ($limit) {
         $sql .= ' LIMIT :limit';
     }
-
+    
     $query = $pdo->prepare($sql);
 
     if ($limit) {
         $query->bindParam(':limit', $limit, PDO::PARAM_INT);
     }
-
+    
     $query->execute();
-    return $query->fetchAll();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+    
+
 }
 
 function getTotalAnimaux(PDO $pdo):int
@@ -58,29 +60,30 @@ function deleteAnimaux(PDO $pdo, int $id):bool
     }
 }
 
-function saveAnimal(PDO $pdo, int $category_id, string $race, string $name, string $age, string $description, string|null $image, int $id = null):bool
+function saveAnimal(PDO $pdo, int $category, string $race, string $name, string $age, string $description, string|null $image, int $id = null):bool
 {
-    if ($id) {
-        // UPDATE
-        $query = $pdo->prepare("UPDATE `animaux`SET `category_id` = :category_id, `race` = :race, `name` = :name,
-                                `age` = :age, `description` = :description, `image` = :image,
-                                WHERE `id` = :id");
-        $query->bindValue(':id', $id, $pdo::PARAM_INT);
-    } else {
+    if ($id === null) {
         // INSERT
-        $query = $pdo->prepare("INSERT INTO animaux (id, category_id, race, name, age, description, image)
-                                VALUES (NULL, :category_id, :race, :name, :age, :description, :image)");
+        $query = $pdo->prepare("INSERT INTO animaux (category_id, race, name, age, description, image)
+                                VALUES (:category_id, :race, :name, :age, :description, :image)");
+    } else {
+        // UPDATE
+        $query = $pdo->prepare("UPDATE `animaux` SET `category_id` = :category_id, `race` = :race, `name` = :name,
+                                `age` = :age, `description` = :description, `image` = :image,
+                                WHERE `id` = :id;");
+        $query->bindValue(':id', $id, $pdo::PARAM_INT);
+
     }
-        $query->bindParam(':category_id', $category_id, $pdo::PARAM_INT);
-        $query->bindParam(':race', $race, $pdo::PARAM_STR);
-        $query->bindParam(':name', $name, $pdo::PARAM_STR);
-        $query->bindParam(':age', $age, $pdo::PARAM_STR);
-        $query->bindParam(':description', $description, $pdo::PARAM_STR);
-        $query->bindParam(':image', $image, $pdo::PARAM_STR);
+        $query->bindValue(':category_id', $category, $pdo::PARAM_INT);
+        $query->bindValue(':race', $race, $pdo::PARAM_STR);
+        $query->bindValue(':name', $name, $pdo::PARAM_STR);
+        $query->bindValue(':age', $age, $pdo::PARAM_STR);
+        $query->bindValue(':description', $description, $pdo::PARAM_STR);
+        $query->bindValue(':image', $image, $pdo::PARAM_STR);
         
         return $query->execute();
 
-        /*
+
         $res = $query->execute();
     if ($res) {
         if ($id) {
@@ -91,7 +94,7 @@ function saveAnimal(PDO $pdo, int $category_id, string $race, string $name, stri
     } else {
         return false;
     }
-    */
+    
 }
 
 
