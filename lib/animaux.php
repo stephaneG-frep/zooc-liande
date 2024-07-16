@@ -93,7 +93,8 @@ function modifAnimal(PDO $pdo, int $category, string $race, string $name, string
     
 }
 
-function addAnimal(PDO $pdo, int $category_id, int|null $image_id, string $race, string $name, string $age, string $description, string|null $image) {
+function addAnimal(PDO $pdo, int $category_id, int|null $image_id, string $race, string $name, string $age, string $description, string|null $image) 
+{
     $sql = "INSERT INTO `animaux` (`category_id`, `image_id`, `race`, `name`, `age`, `description`, `image`)
             VALUES (:category_id, :image_id, :race, :name, :age, :description, :image);";
     $query = $pdo->prepare($sql);

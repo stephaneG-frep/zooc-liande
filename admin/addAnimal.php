@@ -14,7 +14,7 @@ require_once('../lib/pdo.php');
 require_once('../lib/tools.php');
 require_once('../lib/animaux.php');
 require_once('../lib/category.php');
-require_once('../lib/photo.php');
+
 
 
 
@@ -31,7 +31,7 @@ $animal = [
 ];
 
 $categories = getCategories($pdo);
-$photos = getPhoto($pdo);
+
 
 if (isset($_POST['addAnimal'])) {
     $fileName = null;
@@ -118,16 +118,6 @@ if (isset($_POST['addAnimal'])) {
             </select>
         </div>
 
-        <div class="mb-3">
-            <label for="image" class="form-label">Photo</label>
-            <select name="image_id" id="image_id" class="form-select">
-                <?php foreach ($photos as $photo) { ?>
-                <option value="1"
-                    <?php if (isset($animal['image_id']) && $animal['image_id'] == $photo['id']) { ?>selected="selected"
-                    <?php }; ?>><?= $photo['name'] ?></option>
-                <?php } ?>
-            </select>
-        </div>
 
         <div class="mb-3 mt-4">
             <label for="file" class="form-label">Image</label>

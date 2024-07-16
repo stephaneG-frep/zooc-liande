@@ -1,7 +1,7 @@
 <?php
 
-function getCategories(PDO $pdo, int $limit = null) {
-    $sql = 'SELECT * FROM category ORDER BY id DESC';
+function getImage(PDO $pdo, int $limit = null) {
+    $sql = 'SELECT * FROM images ORDER BY id DESC';
 
     if ($limit) {
         $sql .= ' LIMIT :limit';
@@ -15,20 +15,28 @@ function getCategories(PDO $pdo, int $limit = null) {
     
     $query->execute();
     return $query->fetchAll(PDO::FETCH_ASSOC);
-  
 }
 
-function getCategorieById(PDO $pdo, int $id)
+function getImageById(PDO $pdo, int $id)
   {
-    $query = $pdo->prepare("SELECT * FROM category WHERE id = :id");
+    $query = $pdo->prepare("SELECT * FROM images WHERE id = :id");
     $query->bindParam(':id', $id, PDO::PARAM_INT);
     $query->execute();
     return $query->fetch();
   }
 
-function getTotalCategorie(PDO $pdo):int
+function getImageImage(string|null $image)
   {
-      $sql = "SELECT COUNT(*) as total FROM category";
+    if ($image === null) {
+      return _ASSETS_IMG_PATH_."groupe.jpg";
+    } else {
+      return _ANIMAUX_IMAGES_FOLDER_.htmlentities($image);
+    }
+  }  
+
+function getTotalImage(PDO $pdo):int
+  {
+      $sql = "SELECT COUNT(*) as total FROM images";
       $query = $pdo->prepare($sql);
       $query->execute();
       $result = $query->fetch(PDO::FETCH_ASSOC);
@@ -36,9 +44,9 @@ function getTotalCategorie(PDO $pdo):int
       return $result['total'];
   }
 
-function deleteCategorie(PDO $pdo, int $id):bool
+function deleteImage(PDO $pdo, int $id):bool
   {  
-      $query = $pdo->prepare("DELETE FROM category WHERE id = :id");
+      $query = $pdo->prepare("DELETE FROM images WHERE id = :id");
       $query->bindValue(':id', $id, $pdo::PARAM_INT);
       $query->execute();
       if ($query->rowCount() > 0) {
@@ -48,11 +56,12 @@ function deleteCategorie(PDO $pdo, int $id):bool
       }
   }
 
-function addCategorie(PDO $pdo, string $espece) {
-    $sql = "INSERT INTO `category` (`espece`)
-            VALUES (:espece);";
+function addImage(PDO $pdo, string $name, string $image) {
+    $sql = "INSERT INTO `images` (`name`)
+            VALUES (:name, :image);";
     $query = $pdo->prepare($sql);
-    $query->bindParam(':espece', $espece, PDO::PARAM_STR);
+    $query->bindParam(':name', $name, PDO::PARAM_STR);
+    $query->bindParam(':image', $image, PDO::PARAM_STR);
   
     $query->execute();
     if ($query->rowCount() > 0) {
@@ -60,4 +69,5 @@ function addCategorie(PDO $pdo, string $espece) {
   } else {
       return false;
   }
-  }
+
+}

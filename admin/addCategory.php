@@ -12,6 +12,7 @@ if(!isset($_SESSION['user'])) {
 
 require_once('../lib/pdo.php');
 require_once('../lib/category.php');
+require_once('../lib/animaux.php');
 
 
 $errors = [];
@@ -20,9 +21,11 @@ $categorie = [
     'espece' => '',
 ];
 
+$categories = getCategories($pdo);
+
+
 if (isset($_POST['addCategorie'])) {
     
-
     if (!$errors) {
         $res = addCategorie($pdo, $_POST['espece']);
         
@@ -58,12 +61,11 @@ if (isset($_POST['addCategorie'])) {
     <form method="POST" >
 
         <div class="mb-3">
-            <label for="category" class="form-label">Categorie :</label>
-            <textarea name="category" id="category" cols="30" rows="5"
+            <label for="espece" class="form-label">Espece :</label>
+            <textarea name="espece" id="espece" cols="30" rows="5"
                 class="form-control"><?= $categorie['espece']; ?></textarea>
         </div>
         <input type="submit" value="Enregistrer" name="addCategorie" class="btn btn-primary">
-
 
     </form>
 </div>

@@ -12,25 +12,18 @@ if(!isset($_SESSION['user'])) {
 
 require_once('../lib/pdo.php');
 require_once('../lib/tools.php');
-require_once('../lib/employer.php');
-require_once('../lib/category.php');
-
-
+require_once('../lib/image.php');
 
 
 
 $errors = [];
 $messages = [];
-$employer = [
-    'firstname' => '',
-    'lastname' => '',
-    'job' => '',
+$image = [
+    'name' => '',
 ];
 
-$categories = getCategories($pdo);
 
-
-if (isset($_POST['addEmployer'])) {
+if (isset($_POST['addImage'])) {
     $fileName = null;
     // Si un fichier a été envoyé
     if(isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != '') {
@@ -47,25 +40,23 @@ if (isset($_POST['addEmployer'])) {
     }
 
     if (!$errors) {
-        $res = addEmployer($pdo, $_POST['firstname'], $_POST['lastname'], $_POST['job'], $fileName);
+        $res = addImage($pdo, $_POST['name'], $fileName);
         
         if ($res) {
-            $messages[] = 'L\'employer a bien été sauvegardée';
+            $messages[] = 'L\'image a bien été sauvegardée';
         } else {
-            $errors[] = 'L\'employer n\'a pas été sauvegardée';
+            $errors[] = 'L\'image n\'a pas été sauvegardée';
         }
     }
-    $employer = [
-        'firstname' => $_POST['firstname'],
-        'lastname' => $_POST['lastname'],
-        'job' => $_POST['job'],
+    $image = [
+        'name' => $_POST['name'],
     ];
 
 }
 
 ?>
 <div class="container col-xxl-8 px-4 py-5 text-center">
-    <h1 style="color:lightblue">Ajouter un employer</h1>
+    <h1 style="color:lightblue">Ajouter une image</h1>
 
 
     <?php foreach ($messages as $message) { ?>
@@ -81,30 +72,18 @@ if (isset($_POST['addEmployer'])) {
     <?php } ?>
 
     <form method="POST" enctype="multipart/form-data">
-        <div class="mb-3">
-            <label for="firstname" class="form-label">Prénom :</label>
-            <input type="text" name="firstname" id="firstname" class="form-control" value="<?=$employer['firstname']?>">
-        </div>
 
         <div class="mb-3">
-            <label for="lastname" class="form-label">Nom :</label>
-            <input type="text" name="lastname" id="lastname" class="form-control" value="<?=$employer['lastname']?>">
+            <label for="name" class="form-label">Nom :</label>
+            <input type="text" name="name" id="name" class="form-control" value="<?=$image['name']?>">
         </div>
-
-        <div class="mb-3">
-            <label for="job" class="form-label">Job :</label>
-            <textarea name="job" id="job" cols="30" rows="5"
-                class="form-control"><?= $employer['job']; ?></textarea>
-        </div>
-
 
         <div class="mb-3 mt-4">
             <label for="file" class="form-label">Image</label>
             <input type="file" name="file" id="file">
         </div>
-        <input type="submit" value="Enregistrer" name="addEmployer" class="btn btn-primary">
-
-
+        <input type="submit" value="Enregistrer" name="addImage" class="btn btn-primary">
+        
     </form>
 </div>
 <?php

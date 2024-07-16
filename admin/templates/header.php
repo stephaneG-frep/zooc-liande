@@ -66,7 +66,7 @@ adminOnly();
                 </li>
 
                 <li>
-                    <a href="employers.php" class="nav-link text-white">
+                    <a href="images.php" class="nav-link text-white">
                     <i class="bi bi-image"></i>
                         </svg>
                         Images:
