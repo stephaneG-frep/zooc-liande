@@ -13,7 +13,6 @@ if(!isset($_SESSION['user'])) {
 require_once('../lib/pdo.php');
 require_once('../lib/tools.php');
 require_once('../lib/animaux.php');
-require_once('../lib/animal_pdo.php');
 require_once('../lib/category.php');
 require_once('../lib/photo.php');
 
@@ -42,7 +41,7 @@ if (isset($_POST['addAnimal'])) {
         $checkImage = getimagesize($_FILES['file']['tmp_name']);
         if ($checkImage !== false) {
             // Si c'est une image on traite
-            $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
+            $fileName = ($_FILES['file']['name']);
             move_uploaded_file($_FILES['file']['tmp_name'], _ANIMAUX_IMAGES_FOLDER_.$fileName);
         } else {
             // Sinon on affiche un message d'erreur

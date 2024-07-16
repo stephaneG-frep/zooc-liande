@@ -38,12 +38,12 @@ $totalPages = ceil($totalAnimaux / _ADMIN_ITEM_PER_PAGE_);
         <?php foreach($animaux as $animal) {?>
         <tr>
             <th scope="row"><?=$animal['id']?></th>
-            <td><?=$animal['race']?></td>           
+            <td><?=$animal['race']?></td>
             <td>
-            <a href="addAnimal.php">Add</a>         
-             <a href="animaux_delete.php?id=<?= $animal['id'] ?>" 
-              onclick="return confirm('Êtes-vous sûr de vouloir supprimercet animal ?')">Supprimer</a>
-        </td>
+                <a href="addAnimal.php">Add</a>
+                <a href="animaux_delete.php?id=<?= $animal['id'] ?>"
+                    onclick="return confirm('Êtes-vous sûr de vouloir supprimercet animal ?')">Supprimer</a>
+            </td>
         </tr>
         <?php }?>
     </tbody>
@@ -52,9 +52,10 @@ $totalPages = ceil($totalAnimaux / _ADMIN_ITEM_PER_PAGE_);
 <?php if ($totalPages > 1) {?>
 <nav aria-label="Page navigation example">
     <ul class="pagination">
-        <?php for ($i = 1; $i <= $totalPages; $i++) {?>      
-        <li class="page-item <?php if ($i === $page) { echo "active"; }?>"><a class="page-link" href="?page=<?=$i;?>"><?=$i;?></a></li>
-        <?php }?>        
+        <?php for ($i = 1; $i <= $totalPages; $i++) {?>
+        <li class="page-item <?php if ($i === $page) { echo "active"; }?>"><a class="page-link"
+                href="?page=<?=$i;?>"><?=$i;?></a></li>
+        <?php }?>
     </ul>
 </nav>
 <?php }?>

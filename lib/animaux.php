@@ -60,20 +60,16 @@ function deleteAnimaux(PDO $pdo, int $id):bool
     }
 }
 
-function saveAnimal(PDO $pdo, int $category, string $race, string $name, string $age, string $description, string|null $image, int $id = null):bool
+function modifAnimal(PDO $pdo, int $category, string $race, string $name, string $age, string $description, string|null $image, int $id = null):bool
 {
-    if ($id === null) {
-        // INSERT
-        $query = $pdo->prepare("INSERT INTO animaux (category_id, race, name, age, description, image)
-                                VALUES (:category_id, :race, :name, :age, :description, :image)");
-    } else {
+   
         // UPDATE
         $query = $pdo->prepare("UPDATE `animaux` SET `category_id` = :category_id, `race` = :race, `name` = :name,
                                 `age` = :age, `description` = :description, `image` = :image,
                                 WHERE `id` = :id;");
         $query->bindValue(':id', $id, $pdo::PARAM_INT);
 
-    }
+    
         $query->bindValue(':category_id', $category, $pdo::PARAM_INT);
         $query->bindValue(':race', $race, $pdo::PARAM_STR);
         $query->bindValue(':name', $name, $pdo::PARAM_STR);
@@ -96,5 +92,20 @@ function saveAnimal(PDO $pdo, int $category, string $race, string $name, string 
     }
     
 }
+
+function addAnimal(PDO $pdo, int $category_id, int|null $image_id, string $race, string $name, string $age, string $description, string|null $image) {
+    $sql = "INSERT INTO `animaux` (`category_id`, `image_id`, `race`, `name`, `age`, `description`, `image`)
+            VALUES (:category_id, :image_id, :race, :name, :age, :description, :image);";
+    $query = $pdo->prepare($sql);
+    $query->bindParam(':category_id', $category_id, PDO::PARAM_INT);
+    $query->bindParam(':image_id', $image_id, PDO::PARAM_INT);
+    $query->bindParam(':race', $race, PDO::PARAM_STR);
+    $query->bindParam(':name', $name, PDO::PARAM_STR);
+    $query->bindParam(':age', $age, PDO::PARAM_STR);
+    $query->bindParam(':description', $description, PDO::PARAM_STR);
+    $query->bindParam(':image', $image, PDO::PARAM_STR);
+    return $query->execute();
+}
+ 
 
 

@@ -48,27 +48,12 @@ adminOnly();
                     </a>
                 </li>
 
-                <li>
-                    <a href="addAnimal.php" class="nav-link text-white">
-                       <i class="bi bi-table"></i>
-                        </svg>
-                        Nouvel Animal:
-                    </a>
-                </li>
 
                 <li>
                     <a href="employers.php" class="nav-link text-white">
                        <i class="bi bi-table"></i>
                         </svg>
                         Employers:
-                    </a>
-                </li>
-
-                <li>
-                    <a href="addAnimal.php" class="nav-link text-white">
-                       <i class="bi bi-table"></i>
-                        </svg>
-                        Nouvel employer:
                     </a>
                 </li>
 
