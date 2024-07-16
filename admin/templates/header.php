@@ -42,7 +42,7 @@ adminOnly();
 
                 <li>
                     <a href="animaux.php" class="nav-link text-white">
-                       <i class="bi bi-table"></i>
+                    <i class="bi bi-tencent-qq"></i>
                         </svg>
                         Animaux:
                     </a>
@@ -51,15 +51,31 @@ adminOnly();
 
                 <li>
                     <a href="employers.php" class="nav-link text-white">
-                       <i class="bi bi-table"></i>
+                    <i class="bi bi-person-circle"></i>
                         </svg>
                         Employers:
                     </a>
                 </li>
 
                 <li>
+                    <a href="employers.php" class="nav-link text-white">
+                    <i class="bi bi-bookmarks"></i>
+                        </svg>
+                        Catégories:
+                    </a>
+                </li>
+
+                <li>
+                    <a href="employers.php" class="nav-link text-white">
+                    <i class="bi bi-image"></i>
+                        </svg>
+                        Images:
+                    </a>
+                </li>
+
+                <li>
                     <a href="#" class="nav-link text-white">
-                       <i class="bi bi-people-fill"></i>
+                    <i class="bi bi-people"></i>
                         Users:
                     </a>
                 </li>
