@@ -58,7 +58,7 @@ adminOnly();
                 </li>
 
                 <li>
-                    <a href="employers.php" class="nav-link text-white">
+                    <a href="categorys.php" class="nav-link text-white">
                     <i class="bi bi-bookmarks"></i>
                         </svg>
                         Catégories:
