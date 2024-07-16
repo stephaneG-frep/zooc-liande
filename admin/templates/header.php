@@ -74,7 +74,7 @@ adminOnly();
                 </li>
 
                 <li>
-                    <a href="#" class="nav-link text-white">
+                    <a href="users.php" class="nav-link text-white">
                     <i class="bi bi-people"></i>
                         Users:
                     </a>

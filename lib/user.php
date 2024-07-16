@@ -29,3 +29,50 @@ function verifyUserLoginPassword(PDO $pdo, string $email, string $password)
                 return false;
             }
 }
+
+function deleteUser(PDO $pdo, int $id):bool
+{  
+    $query = $pdo->prepare("DELETE FROM users WHERE id = :id");
+    $query->bindValue(':id', $id, $pdo::PARAM_INT);
+    $query->execute();
+    if ($query->rowCount() > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function getTotalUser(PDO $pdo):int
+{
+    $sql = "SELECT COUNT(*) as total FROM users";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total'];
+}
+
+function getUserById(PDO $pdo, int $id)
+{
+  $query = $pdo->prepare("SELECT * FROM users WHERE id = :id");
+  $query->bindParam(':id', $id, PDO::PARAM_INT);
+  $query->execute();
+  return $query->fetch();
+}
+
+function getUser(PDO $pdo, int $limit = null) {
+    $sql = 'SELECT * FROM users ORDER BY id DESC';
+
+    if ($limit) {
+        $sql .= ' LIMIT :limit';
+    }
+
+    $query = $pdo->prepare($sql);
+
+    if ($limit) {
+        $query->bindParam(':limit', $limit, PDO::PARAM_INT);
+    }
+
+    $query->execute();
+    return $query->fetchAll();
+}
