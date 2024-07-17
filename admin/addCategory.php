@@ -11,6 +11,7 @@ if(!isset($_SESSION['user'])) {
 }*/
 
 require_once('../lib/pdo.php');
+require_once('../lib/tools.php');
 require_once('../lib/category.php');
 require_once('../lib/animaux.php');
 
@@ -42,6 +43,9 @@ if (isset($_POST['addCategorie'])) {
 }
 
 ?>
+
+<h1><?=$pageTitle; ?></h1>
+
 <div class="container col-xxl-8 px-4 py-5 text-center">
     <h1 style="color:lightblue">Ajouter de categorie</h1>
 

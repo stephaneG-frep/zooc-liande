@@ -1,10 +1,14 @@
 <?php
 
-function getCategories(PDO $pdo, int $limit = null) {
+function getCategories(PDO $pdo, int $limit = null, int $page = null)
+ {
     $sql = 'SELECT * FROM category ORDER BY id DESC';
 
-    if ($limit) {
+    if ($limit && !$page) {
         $sql .= ' LIMIT :limit';
+    }
+    if ($page) {
+        $sql .= " LIMIT :offset, :limit";
     }
     
     $query = $pdo->prepare($sql);
@@ -12,9 +16,14 @@ function getCategories(PDO $pdo, int $limit = null) {
     if ($limit) {
         $query->bindParam(':limit', $limit, PDO::PARAM_INT);
     }
+    if ($page) {
+      $offset = ($page -1) * $limit;
+      $query->bindValue(":offset", $offset, PDO::PARAM_INT);
+      }
     
     $query->execute();
-    return $query->fetchAll(PDO::FETCH_ASSOC);
+    $categories = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $categories;
   
 }
 

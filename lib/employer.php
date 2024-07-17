@@ -19,11 +19,15 @@
     }
   } 
 
-  function getEmployer(PDO $pdo, int $limit = null) {
+  function getEmployer(PDO $pdo, int $limit = null, int $page = null)
+   {
     $sql = 'SELECT * FROM employers ORDER BY id DESC';
 
-    if ($limit) {
+    if ($limit && !$page) {
         $sql .= ' LIMIT :limit';
+    }
+    if ($page) {
+      $sql .= " LIMIT :offset, :limit";
     }
 
     $query = $pdo->prepare($sql);
@@ -32,8 +36,14 @@
         $query->bindParam(':limit', $limit, PDO::PARAM_INT);
     }
 
+    if ($page) {
+      $offset = ($page - 1) * $limit;
+      $query->bindValue(":offset", $offset, PDO::PARAM_INT);
+    }
+
     $query->execute();
-    return $query->fetchAll();
+    $employers = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $employers;
 }
 
 function getTotalEmployer(PDO $pdo):int

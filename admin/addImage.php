@@ -52,6 +52,8 @@ if (isset($_POST['addImage'])) {
 }
 
 ?>
+<h1><?=$pageTitle; ?></h1>
+
 <div class="container col-xxl-8 px-4 py-5 text-center">
     <h1 style="color:lightblue">Ajouter une image</h1>
 

@@ -64,6 +64,9 @@ if (isset($_POST['addEmployer'])) {
 }
 
 ?>
+
+<h1><?=$pageTitle; ?></h1>
+
 <div class="container col-xxl-8 px-4 py-5 text-center">
     <h1 style="color:lightblue">Ajouter un employer</h1>
 

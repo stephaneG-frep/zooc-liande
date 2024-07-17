@@ -19,11 +19,15 @@
     }
   } 
 
-  function getAnimaux(PDO $pdo, int $limit = null) {
+  function getAnimaux(PDO $pdo, int $limit = null, int $page = null)
+   {
     $sql = 'SELECT * FROM animaux ORDER BY id DESC';
 
-    if ($limit) {
+    if ($limit && !$page) {
         $sql .= ' LIMIT :limit';
+    }
+    if ($page) {
+        $sql .= " LIMIT :offset, :limit";
     }
     
     $query = $pdo->prepare($sql);
@@ -31,10 +35,16 @@
     if ($limit) {
         $query->bindParam(':limit', $limit, PDO::PARAM_INT);
     }
+
+    if ($page) {
+        $offset = ($page - 1) * $limit;
+        $query->bindValue(":offset", $offset, PDO::PARAM_INT);
+    }
     
     $query->execute();
-    return $query->fetchAll(PDO::FETCH_ASSOC);
-    
+    $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    return $animaux;
 
 }
 
