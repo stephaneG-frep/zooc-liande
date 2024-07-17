@@ -3,55 +3,35 @@ require_once('../lib/config.php');
 require_once('../lib/session.php');
 adminOnly();
 
+
 require_once('templates/header.php');
+/*
+if(!isset($_SESSION['user'])) {
+    header('location: home.php'); 
+}*/
+
 require_once('../lib/pdo.php');
 require_once('../lib/tools.php');
 require_once('../lib/image.php');
 
-
-
 $errors = [];
 $messages = [];
-$image = [
-    'name' => '',
-];
-
+$image = '';
 
 if (isset($_POST['addImage'])) {
-    $fileName = null;
-    // Si un fichier a été envoyé
-    if(isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != '') {
-        // la méthode getimagessize va retourner false si le fichier n'est pas une image
-        $checkImage = getimagesize($_FILES['file']['tmp_name']);
-        if ($checkImage !== false) {
-            // Si c'est une image on traite
-            $fileName = ($_FILES['file']['name']);
-            $upload = "../uploads/images/".$fileName;
+    $name = $_POST['name'];
 
-           move_uploaded_file($_FILES['file']['name'], $upload);
-       
-        } else {
-            // Sinon on affiche un message d'erreur
-            $errors[] = 'Le fichier doit être une image';
-        }
-    }
-
-    if (!$errors) {
-        $res = addImage($pdo, $_POST['name'], $fileName);
-        
-        if ($res) {
-            $messages[] = 'L\'image a bien été sauvegardée';
-        } else {
-            $errors[] = 'L\'image n\'a pas été sauvegardée';
-        }
-    }
-    $image = [
-        'name' => $_POST['name'],
-    ];
-
+    $image = $_FILES['file']['name'];
+    $upload = "../uploads/images/";
+    move_uploaded_file($_FILES['file']['tmp_name'], $upload);
+     
+    
 }
 
+
+
 ?>
+
 <div class="container col-xxl-8 px-4 py-5 text-center">
     <h1 style="color:lightblue">Ajouter une image</h1>
 
@@ -68,7 +48,7 @@ if (isset($_POST['addImage'])) {
     </div>
     <?php } ?>
 
-    <form method="POST" enctype="multipart/form-data">
+    <form  method="POST" enctype="multipart/form-data">
 
         <div class="mb-3">
             <label for="name" class="form-label">Nom :</label>

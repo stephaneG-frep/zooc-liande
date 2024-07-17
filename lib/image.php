@@ -57,7 +57,7 @@ function deleteImage(PDO $pdo, int $id):bool
   }
 
 function addImage(PDO $pdo, string $name, string $image) {
-    $sql = "INSERT INTO `images` (`name`)
+    $sql = "INSERT INTO `images` (`name`, image)
             VALUES (:name, :image);";
     $query = $pdo->prepare($sql);
     $query->bindParam(':name', $name, PDO::PARAM_STR);
@@ -70,4 +70,13 @@ function addImage(PDO $pdo, string $name, string $image) {
       return false;
   }
 
+}
+
+function newImage(PDO $pdo, string $name, string $image)
+{
+  $sql = "INSERT INTO `images`(name, image)
+          VALUES (?, ?)";
+  $query = $pdo->prepare($sql);
+  $query->bindParam('ss', $name, $image);
+  $query->execute();
 }
