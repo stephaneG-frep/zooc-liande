@@ -31,7 +31,7 @@
 
    
 <div class="container col-xxl-8 px-4 py-5 ">
-    <h1>Connexion</h1>
+    <h1 class="display-4 fw-bold ">Connexion</h1>
 
     <?php foreach($messages as $message) {?>
     <div class="alert alert-success">

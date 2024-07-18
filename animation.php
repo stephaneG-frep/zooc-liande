@@ -4,7 +4,7 @@
 ?>
 
 <div class="container col-xxl-8 px-4 py-5 text-center">
-   <h1 style="color:lightblue">Les plans du ZOO</h1>
+   <h1 class="display-4 fw-bold " style="color:lightblue">Les plans du ZOO</h1>
 
    <div class="row">
 

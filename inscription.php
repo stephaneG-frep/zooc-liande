@@ -23,7 +23,7 @@
 ?>
 
 <div class="container">
-    <h1>Inscription</h1>
+    <h1 class="display-4 fw-bold ">Inscription</h1>
 
     <?php foreach($messages as $message) {?>
     <div class="alert alert-success">
