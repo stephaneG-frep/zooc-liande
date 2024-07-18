@@ -3,7 +3,7 @@
      require_once __DIR__. "/templates/body_pages.php";
      require_once __DIR__. "/lib/image.php";
 
-     $images = getImageImage($image);
+     $images = getImage($pdo);
 
 ?>
   <div class="container px-4 py-5">
@@ -13,7 +13,7 @@
 
 
     <div class="row mx-2">
-<?php foreach($items as $key => $item) {
+<?php foreach($images as $key => $image) {
         include("templates/photo_partial.php");
     }?>
 </div>

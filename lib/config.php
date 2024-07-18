@@ -8,7 +8,7 @@ define("_ANIMAUX_IMAGES_FOLDER_", "uploads/images/");
 
 $mainMenu = [
     "home.php" => "Accueil",
-    "photo.php" => "photos",
+    "img.php" => "photos",
     "animation.php" => "animations",
    
 ];
