@@ -2,7 +2,7 @@
 
 require_once __DIR__. "/lib/animaux.php";
 require_once __DIR__. "/lib/image.php";
-require_once __DIR__. "/lib/category.php";
+//require_once __DIR__. "/lib/category.php";
 require_once __DIR__. "/lib/tools.php";
 require_once __DIR__. "/templates/header.php";
 require_once __DIR__. "/templates/body_home.php";
@@ -11,7 +11,7 @@ $id = (int)$_GET["id"];
 
 
 $animal = getAnimauxById($pdo, $id);
-$image = getImageImage($image);
+//$image = getImageImage($image);
 
 
 
