@@ -8,7 +8,7 @@ require_once __DIR__. "/templates/body_home.php";
 
 $id = (int)$_GET["id"];
 $employer = getEmployerById($pdo, $id);
-$category = getCategories($pdo);
+
 
 
 ?>

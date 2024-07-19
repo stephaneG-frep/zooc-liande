@@ -57,14 +57,7 @@ adminOnly();
                     </a>
                 </li>
 
-                <li>
-                    <a href="categorys.php" class="nav-link text-white">
-                    <i class="bi bi-bookmarks"></i>
-                        </svg>
-                        Catégories:
-                    </a>
-                </li>
-
+        
                 <li>
                     <a href="images.php" class="nav-link text-white">
                     <i class="bi bi-image"></i>

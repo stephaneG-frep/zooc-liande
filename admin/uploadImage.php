@@ -22,7 +22,7 @@ if (isset($_POST['addImage'])) {
     $name = $_POST['name'];
 
     $image = $_FILES['file']['name'];
-    $upload = "../uploads/images/";
+    $upload = "../uploads/images/".$image;
     move_uploaded_file($_FILES['file']['tmp_name'], $upload);
      
     

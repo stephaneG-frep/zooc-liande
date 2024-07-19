@@ -13,7 +13,7 @@ if(!isset($_SESSION['user'])) {
 require_once('../lib/pdo.php');
 require_once('../lib/tools.php');
 require_once('../lib/animaux.php');
-require_once('../lib/category.php');
+//require_once('../lib/category.php');
 
 
 
@@ -26,11 +26,9 @@ $animal = [
     'name' => '',
     'age' => '',
     'description' => '',
-    'category_id' => '',
+    'espece' => '',
     'image_id' => '',
 ];
-
-$categories = getCategories($pdo);
 
 
 if (isset($_POST['addAnimal'])) {
@@ -50,7 +48,7 @@ if (isset($_POST['addAnimal'])) {
     }
 
     if (!$errors) {
-        $res = addAnimal($pdo, $_POST['category_id'], $_POST['image_id'], $_POST['race'], $_POST['name'], $_POST['age'], $_POST['description'], $fileName);
+        $res = addAnimal($pdo, $_POST['image_id'], $_POST['race'], $_POST['name'], $_POST['age'], $_POST['description'], $_POST['espece'], $fileName);
         
         if ($res) {
             $messages[] = 'L\'animal a bien été sauvegardée';
@@ -58,12 +56,13 @@ if (isset($_POST['addAnimal'])) {
             $errors[] = 'L\'animal n\'a pas été sauvegardée';
         }
     }
+
     $animal = [
         'race' => $_POST['race'],
         'name' => $_POST['name'],
         'age' => $_POST['age'],
         'description' => $_POST['description'],
-        'category_id' => $_POST['category_id'],
+        'espece' => $_POST['espece'],
         'image_id' => $_POST['image_id'],
     ];
 
@@ -109,16 +108,10 @@ if (isset($_POST['addAnimal'])) {
             <textarea name="description" id="description" cols="30" rows="5"
                 class="form-control"><?= $animal['description']; ?></textarea>
         </div>
-
         <div class="mb-3">
-            <label for="category_id" class="form-label">Catégorie</label>
-            <select name="category_id" id="category_id" class="form-select">
-                <?php foreach ($categories as $category) { ?>
-                <option value="1"
-                    <?php if (isset($animal['category_id']) && $animal['category_id'] == $category['id']) { ?>selected="selected"
-                    <?php }; ?>><?= $category['espece'] ?></option>
-                <?php } ?>
-            </select>
+            <label for="espece" class="form-label">Espece</label>
+            <textarea name="espece" id="espece" cols="30" rows="5"
+                class="form-control"><?= $animal['espece']; ?></textarea>
         </div>
 
 

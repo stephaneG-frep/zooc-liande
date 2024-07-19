@@ -20,17 +20,30 @@
     
 
 ?>
-<div class="container px-4 py-5">
 
+<div class="container px-4 py-5">
     <div class="row text-center">
         <h1 class="display-4 fw-bold" style="color: #F7DB6A;">Les photos</h1>
 
 
-        <div class="">
-            <?php foreach($images as $key => $image) {
-        include("templates/photo_partial.php");
-    }?>
-        </div>
+        <table class="fw-bold" style="color:darkgreen">
+            <thead>
+                <tr>
+                    <th style="background: #C08B5C ;" scope="col">Nom</th>
+                    <th style="background: #A4CE95;" scope="col">Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($images as $image) {?>
+                <tr>
+                    <td style="background: #FFE194;"><?=$image['name']?></td>
+                    <td style="background: #EF6262;"><img src="<?=getImageImage($image['image'])?>" alt="" width="300" height="150"></td>
+                    <td>
+                    </td>
+                </tr>
+                <?php }?>
+            </tbody>
+        </table>
 
         <?php if ($totalPages > 1) {?>
         <nav aria-label="Page navigation example">
@@ -43,6 +56,6 @@
         </nav>
         <?php }?>
 
-        <?php 
+<?php 
    require_once __DIR__. "/templates/footer.php";
 ?>

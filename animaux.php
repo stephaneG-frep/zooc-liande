@@ -5,6 +5,7 @@
     
    $animaux = getAnimaux($pdo);
    
+   
 ?>
 <div class="container px-4 py-5">
 
