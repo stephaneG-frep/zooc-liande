@@ -38,7 +38,7 @@
                 <?php foreach($images as $image) {?>
                 <tr>
                     <td style="background: #FFE194;"><?=$image['name']?></td>
-                    <td style="background: #EF6262;"><img src="<?=getImageImage($image['image'])?>" alt="" width="400" height="200"></td>
+                    <td style="background: #EF6262;"><img src="<?=getImageImage($image['image'])?>" alt="" width="300" height="300"></td>
                     <td>
                     </td>
                 </tr>
