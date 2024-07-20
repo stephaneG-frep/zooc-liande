@@ -25,10 +25,8 @@ if (isset($_POST['addImage'])) {
         $checkImage = getimagesize($_FILES['file']['tmp_name']);
         if ($checkImage !== false) {
             // Si c'est une image on traite
-            $fileName = ($_FILES['file']['name']);
-            $upload = "../uploads/images/".$fileName;
-
-           move_uploaded_file($_FILES['file']['name'], $upload);
+            $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
+            move_uploaded_file($_FILES['file']['tmp_name'], _SAVE_ANIMAUX_IMG_.$fileName);
        
         } else {
             // Sinon on affiche un message d'erreur

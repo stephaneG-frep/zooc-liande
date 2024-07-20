@@ -13,7 +13,7 @@ if(!isset($_SESSION['user'])) {
 require_once('../lib/pdo.php');
 require_once('../lib/tools.php');
 require_once('../lib/employer.php');
-require_once('../lib/category.php');
+//require_once('../lib/category.php');
 
 
 
@@ -27,7 +27,7 @@ $employer = [
     'job' => '',
 ];
 
-$categories = getCategories($pdo);
+
 
 
 if (isset($_POST['addEmployer'])) {
@@ -38,8 +38,8 @@ if (isset($_POST['addEmployer'])) {
         $checkImage = getimagesize($_FILES['file']['tmp_name']);
         if ($checkImage !== false) {
             // Si c'est une image on traite
-            $fileName = ($_FILES['file']['name']);
-            move_uploaded_file($_FILES['file']['tmp_name'], _ANIMAUX_IMAGES_FOLDER_.$fileName);
+            $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
+            move_uploaded_file($_FILES['file']['tmp_name'], _SAVE_ANIMAUX_IMG_.$fileName);
         } else {
             // Sinon on affiche un message d'erreur
             $errors[] = 'Le fichier doit être une image';

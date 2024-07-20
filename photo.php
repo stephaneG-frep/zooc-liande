@@ -1,6 +1,7 @@
 <?php 
     require_once __DIR__. "/templates/header.php";
      require_once __DIR__. "/templates/body_pages.php";
+     require_once __DIR__. "/lib/tools.php";
      require_once __DIR__. "/lib/image.php";
 
     

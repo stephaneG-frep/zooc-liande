@@ -40,7 +40,7 @@ if (isset($_POST['addAnimal'])) {
         if ($checkImage !== false) {
             // Si c'est une image on traite
             $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
-            move_uploaded_file($_FILES['file']['tmp_name'], _ANIMAUX_IMAGES_FOLDER_.$fileName);
+            move_uploaded_file($_FILES['file']['tmp_name'], _SAVE_ANIMAUX_IMG_.$fileName);
         } else {
             // Sinon on affiche un message d'erreur
             $errors[] = 'Le fichier doit être une image';

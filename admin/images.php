@@ -5,6 +5,7 @@ adminOnly();
 
 require_once __DIR__. "/templates/header.php";
 require_once __DIR__. "/../lib/pdo.php";
+require_once __DIR__. "/../lib/tools.php";
 require_once __DIR__. "/../lib/image.php";
 
 
@@ -40,7 +41,7 @@ $totalPages = ceil($totalImage / _ADMIN_ITEM_PER_PAGE_);
         <tr>
             <th scope="row"><?=$image['id']?></th>
             <td><?=$image['name']?></td>
-            <td><img src="../uploads/images/<?=$image['image'] ?>" alt="" width="200" height="150"></td>
+            <td><img src="<?=_ADMIN_IMG_.$image['image'] ?>" alt="" width="200" height="150"></td>
             <td>
                 <a href="addImage.php">Add</a>
                 <a href="image_delete.php?id=<?= $image['id'] ?>"

@@ -83,9 +83,10 @@ function addImage(PDO $pdo, string $name, string $image) {
 
 function newImage(PDO $pdo, string $name, string $image)
 {
-  $sql = "INSERT INTO `images`(name, image)
-          VALUES (?, ?)";
+  $sql = "INSERT INTO `images`(`name`, `image`)
+          VALUES (:name, :image)";
   $query = $pdo->prepare($sql);
-  $query->bindParam('ss', $name, $image);
-  $query->execute();
+  $query->bindParam(':name', $name, PDO::PARAM_STR);
+  $query->bindParam(':image', $image, PDO::PARAM_STR);
+  return $query->execute();
 }
