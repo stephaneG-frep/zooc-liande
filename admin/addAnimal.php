@@ -39,7 +39,7 @@ if (isset($_POST['addAnimal'])) {
         $checkImage = getimagesize($_FILES['file']['tmp_name']);
         if ($checkImage !== false) {
             // Si c'est une image on traite
-            $fileName = ($_FILES['file']['name']);
+            $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
             move_uploaded_file($_FILES['file']['tmp_name'], _ANIMAUX_IMAGES_FOLDER_.$fileName);
         } else {
             // Sinon on affiche un message d'erreur
