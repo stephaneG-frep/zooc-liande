@@ -72,7 +72,8 @@ if (isset($_POST['addImage'])) {
 
         <div class="mb-3">
             <label for="name" class="form-label">Nom :</label>
-            <input type="text" name="name" id="name" class="form-control" value="<?=$image['name']?>">
+            <textarea name="name" id="name" cols="30" rows="5"
+            class="form-control"><?=$image['name'];?></textarea>
         </div>
 
         <div class="mb-3 mt-4">

@@ -30,7 +30,7 @@
         <table class="fw-bold" style="color:darkgreen">
             <thead>
                 <tr>
-                    <th style="background: #C08B5C ;" scope="col">Nom</th>
+                    <th style="background: #C08B5C; padding:20px;" scope="col">Nom</th>
                     <th style="background: #A4CE95;" scope="col">Image</th>
                 </tr>
             </thead>
@@ -38,7 +38,7 @@
                 <?php foreach($images as $image) {?>
                 <tr>
                     <td style="background: #FFE194;"><?=$image['name']?></td>
-                    <td style="background: #EF6262;"><img src="<?=getImageImage($image['image'])?>" alt="" width="300" height="150"></td>
+                    <td style="background: #EF6262;"><img src="<?=getImageImage($image['image'])?>" alt="" width="400" height="200"></td>
                     <td>
                     </td>
                 </tr>
