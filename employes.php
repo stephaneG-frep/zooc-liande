@@ -9,12 +9,12 @@
 <div class="container px-4 py-5">
 
     <div class="row text-center">
-        <h1 class="display-4 fw-bold " style="color: #F7DB6A;">Nos amis les employers</h1>
+        <h1 class="display-4 fw-bold " style="color: #F7DB6A;">Nos amis les employés</h1>
 
 
         <div class="row mx-2">
     <?php foreach($employers as $key => $employer) {
-            include("templates/employer_partial.php");
+            include("templates/employes_partial.php");
         }?>
 </div>
 

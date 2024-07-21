@@ -53,7 +53,7 @@ adminOnly();
                     <a href="employers.php" class="nav-link text-white">
                     <i class="bi bi-person-circle"></i>
                         </svg>
-                        Employers:
+                        Employés:
                     </a>
                 </li>
 

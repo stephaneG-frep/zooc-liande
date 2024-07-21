@@ -22,7 +22,7 @@
                             <a href="animaux.php" class="btn btn-primary">Voir les animaux</a>
                         </li>
                         <li class="me-auto py-2 px-2">
-                            <a href="employer.php" class="btn btn-primary ">Mais qui s'occupe des animaux ??</a>
+                            <a href="employes.php" class="btn btn-primary ">Mais qui s'occupe des animaux ??</a>
                         </li>
                     </ul>
                 </div>

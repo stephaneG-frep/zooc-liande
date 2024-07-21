@@ -13,6 +13,8 @@ if(!isset($_SESSION['user'])) {
 require_once('../lib/pdo.php');
 require_once('../lib/tools.php');
 require_once('../lib/animaux.php');
+require_once('../lib/image.php');
+require_once('../lib/photo.php');
 //require_once('../lib/category.php');
 
 
@@ -28,6 +30,9 @@ $animal = [
     'description' => '',
     'espece' => '',
     'image_id' => '',
+];
+$animaux = [
+   'image_id' => '',
 ];
 
 

@@ -81,11 +81,11 @@ function addImage(PDO $pdo, string $name, string $image) {
 
 }
 
-function newImage(PDO $pdo, string $name, string $image)
+function modif_image(PDO $pdo, string $name, string $image, int $id=null)
 {
-  $sql = "INSERT INTO `images`(`name`, `image`)
-          VALUES (:name, :image)";
+  $sql = "UPDATE images SET name = :name, image = :image WHERE id = :id;";
   $query = $pdo->prepare($sql);
+  $query->bindParam(':id', $id, PDO::PARAM_INT);
   $query->bindParam(':name', $name, PDO::PARAM_STR);
   $query->bindParam(':image', $image, PDO::PARAM_STR);
   return $query->execute();

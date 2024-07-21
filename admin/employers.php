@@ -24,7 +24,7 @@ $totalPages = ceil($totalEmployer / _ADMIN_ITEM_PER_PAGE_);
 
 ?>
 
-<h1 class="py-5">Listes des Employers</h1>
+<h1 class="py-5">Listes des Employés</h1>
 
 <table class="table">
     <thead>

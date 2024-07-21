@@ -31,6 +31,8 @@ $totalPages = ceil($totalAnimaux / _ADMIN_ITEM_PER_PAGE_);
         <tr>
             <th scope="col">#</th>
             <th scope="col">Race</th>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -39,6 +41,8 @@ $totalPages = ceil($totalAnimaux / _ADMIN_ITEM_PER_PAGE_);
         <tr>
             <th scope="row"><?=$animal['id']?></th>
             <td><?=$animal['race']?></td>
+            <td><?=$animal['name']?></td>
+            <td><img src="<?=_ADMIN_IMG_.$animal['image'] ?>" alt="" width="100" height="100"></td>
             <td>
                 <a href="addAnimal.php">Add</a>
                 <a href="animaux_delete.php?id=<?= $animal['id'] ?>"
