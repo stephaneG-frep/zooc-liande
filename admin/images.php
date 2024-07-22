@@ -44,7 +44,7 @@ $totalPages = ceil($totalImage / _ADMIN_ITEM_PER_PAGE_);
             <td><img src="<?=_ADMIN_IMG_.$image['image'] ?>" alt="" width="200" height="150"></td>
             <td>
                 <a href="addImage.php">Add</a>
-                <a href="modif_image.php?id=<?= $image['id'] ?>">Modifier</a>
+                
                 <a href="image_delete.php?id=<?= $image['id'] ?>"
                     onclick="return confirm('Êtes-vous sûr de vouloir supprimercet animal ?')">Supprimer</a>
             </td>

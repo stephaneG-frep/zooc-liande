@@ -33,6 +33,7 @@ $totalPages = ceil($totalEmployer / _ADMIN_ITEM_PER_PAGE_);
             <th scope="col">Nom</th>
             <th scope="col">Prénom</th>
             <th scope="col">Job</th>
+            <th scope="col">Image</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -43,6 +44,7 @@ $totalPages = ceil($totalEmployer / _ADMIN_ITEM_PER_PAGE_);
             <td><?=$employer['firstname']?></td>
             <td><?=$employer['lastname']?></td>
             <td><?=$employer['job']?></td>
+            <td><img src="<?=_ADMIN_IMG_.$employer['image'] ?>" alt="" class="rounded rounded-circle" width="100" height="100"></td>
             <td>
                 <a href="addEmployer.php">Add</a>
                 <a href="employer_delete.php?id=<?= $employer['id'] ?>"
